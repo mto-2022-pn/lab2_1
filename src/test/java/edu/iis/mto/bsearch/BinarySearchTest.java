@@ -10,9 +10,11 @@ class BinarySearchTest {
     int[] sequenceWithOneElement = new int[]{13};
     int[] sequenceWithMultipleElements = new int[]{13,15,17,22,43,78,112,234,666};
     int[] emptySequence = new int[]{};
+    int[] sequenceWithMultipleSameElements = new int[]{13, 13, 13, 13, 13, 13 };
 
     int validKeyInOneElementSequence = 13;
     int invalidKeyInOneElementSequence = 12;
+    int elementInMultipleSameElementsSequence = 13;
 
     int positionNotFound = -1;
 
@@ -65,5 +67,12 @@ class BinarySearchTest {
         SearchResult searchResult = BinarySearch.search(validKeyInOneElementSequence,emptySequence);
         assertFalse(searchResult.isFound());
         assertEquals(positionNotFound,searchResult.getPosition());
+    }
+    @Test
+    void sequenceHasMultipleSameElements()
+    {
+        SearchResult searchResult = BinarySearch.search(elementInMultipleSameElementsSequence, sequenceWithMultipleSameElements);
+        assertTrue(searchResult.isFound());
+        assertEquals(elementInMultipleSameElementsSequence,sequenceWithMultipleSameElements[searchResult.getPosition()]);
     }
 }
