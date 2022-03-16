@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class BinarySearchTest {
     int[] sequenceWithOneElement = new int[]{13};
-
+    int[] sequenceWithMultipleElements = new int[]{13,15,17,22,43,78,112,234,666};
     @BeforeEach
     void setUp() throws Exception {}
 
@@ -21,10 +21,16 @@ class BinarySearchTest {
     }
     @Test
     void noKeyInSequenceWithOneElement() {
-        int key=12;
+        int key = 12;
         SearchResult searchResult = BinarySearch.search(key,sequenceWithOneElement);
         assertFalse(searchResult.isFound());
         assertEquals(-1,searchResult.getPosition());
     }
-
+    @Test
+    void keyIsFirstElementInSequenceWithMultipleElements(){
+        int key = 13;
+        SearchResult searchResult = BinarySearch.search(key,sequenceWithMultipleElements);
+        assertTrue(searchResult.isFound());
+        assertEquals(key,sequenceWithMultipleElements[0]);
+    }
 }
