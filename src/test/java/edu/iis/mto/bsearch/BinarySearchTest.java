@@ -33,4 +33,11 @@ class BinarySearchTest {
         assertTrue(searchResult.isFound());
         assertEquals(key,sequenceWithMultipleElements[0]);
     }
+    @Test
+    void keyIsLastElementInSequenceWithMultipleElements(){
+        int key = 666;
+        SearchResult searchResult = BinarySearch.search(key,sequenceWithMultipleElements);
+        assertTrue(searchResult.isFound());
+        assertEquals(key, sequenceWithMultipleElements[sequenceWithMultipleElements.length - 1]);
+    }
 }
