@@ -47,4 +47,11 @@ class BinarySearchTest {
         assertTrue(searchResult.isFound());
         assertEquals(key,sequenceWithMultipleElements[sequenceWithMultipleElements.length/2]);
     }
+    @Test
+    void noKeyInSequenceWithMultipleElements(){
+        int key = 555;
+        SearchResult searchResult = BinarySearch.search(key,sequenceWithMultipleElements);
+        assertFalse(searchResult.isFound());
+        assertEquals(-1,searchResult.getPosition());
+    }
 }
