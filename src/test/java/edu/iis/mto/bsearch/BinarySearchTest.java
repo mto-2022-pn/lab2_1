@@ -9,49 +9,61 @@ import org.junit.jupiter.api.Test;
 class BinarySearchTest {
     int[] sequenceWithOneElement = new int[]{13};
     int[] sequenceWithMultipleElements = new int[]{13,15,17,22,43,78,112,234,666};
+    int[] emptySequence = new int[]{};
+
+    int validKeyInOneElementSequence = 13;
+    int invalidKeyInOneElementSequence = 12;
+
+    int positionNotFound = -1;
+
+    int firstElementInMultipleElementsSequence = sequenceWithMultipleElements[0];
+    int lastElementInMultipleElementsSequence = sequenceWithMultipleElements[sequenceWithMultipleElements.length-1];
+    int middleElementInMultipleElementsSequence = sequenceWithMultipleElements[sequenceWithMultipleElements.length/2];
+    int invalidKeyInMultipleElementsSequence = 555;
+
     @BeforeEach
     void setUp() throws Exception {}
 
     @Test
     void keyIsInSequenceWithOneElement() {
-        int key = 13;
-        SearchResult searchResult = BinarySearch.search(key, sequenceWithOneElement);
+        SearchResult searchResult = BinarySearch.search(validKeyInOneElementSequence, sequenceWithOneElement);
         assertTrue(searchResult.isFound());
-        assertEquals(key, sequenceWithOneElement[searchResult.getPosition()]);
+        assertEquals(validKeyInOneElementSequence, sequenceWithOneElement[searchResult.getPosition()]);
     }
     @Test
     void noKeyInSequenceWithOneElement() {
-        int key = 12;
-        SearchResult searchResult = BinarySearch.search(key,sequenceWithOneElement);
+        SearchResult searchResult = BinarySearch.search(invalidKeyInOneElementSequence,sequenceWithOneElement);
         assertFalse(searchResult.isFound());
-        assertEquals(-1,searchResult.getPosition());
+        assertEquals(positionNotFound,searchResult.getPosition());
     }
     @Test
     void keyIsFirstElementInSequenceWithMultipleElements(){
-        int key = 13;
-        SearchResult searchResult = BinarySearch.search(key,sequenceWithMultipleElements);
+        SearchResult searchResult = BinarySearch.search(firstElementInMultipleElementsSequence,sequenceWithMultipleElements);
         assertTrue(searchResult.isFound());
-        assertEquals(key,sequenceWithMultipleElements[0]);
+        assertEquals(firstElementInMultipleElementsSequence,sequenceWithMultipleElements[0]);
     }
     @Test
     void keyIsLastElementInSequenceWithMultipleElements(){
-        int key = 666;
-        SearchResult searchResult = BinarySearch.search(key,sequenceWithMultipleElements);
+        SearchResult searchResult = BinarySearch.search(lastElementInMultipleElementsSequence,sequenceWithMultipleElements);
         assertTrue(searchResult.isFound());
-        assertEquals(key, sequenceWithMultipleElements[sequenceWithMultipleElements.length - 1]);
+        assertEquals(lastElementInMultipleElementsSequence, sequenceWithMultipleElements[sequenceWithMultipleElements.length - 1]);
     }
     @Test
     void keyIsMiddleElementInSequenceWithMultipleElements(){
-        int key = 43;
-        SearchResult searchResult = BinarySearch.search(key,sequenceWithMultipleElements);
+        SearchResult searchResult = BinarySearch.search(middleElementInMultipleElementsSequence,sequenceWithMultipleElements);
         assertTrue(searchResult.isFound());
-        assertEquals(key,sequenceWithMultipleElements[sequenceWithMultipleElements.length/2]);
+        assertEquals(middleElementInMultipleElementsSequence,sequenceWithMultipleElements[sequenceWithMultipleElements.length/2]);
     }
     @Test
     void noKeyInSequenceWithMultipleElements(){
-        int key = 555;
-        SearchResult searchResult = BinarySearch.search(key,sequenceWithMultipleElements);
+        SearchResult searchResult = BinarySearch.search(invalidKeyInMultipleElementsSequence,sequenceWithMultipleElements);
         assertFalse(searchResult.isFound());
-        assertEquals(-1,searchResult.getPosition());
+        assertEquals(positionNotFound,searchResult.getPosition());
+    }
+    @Test
+    void sequenceIsEmpty(){
+        SearchResult searchResult = BinarySearch.search(validKeyInOneElementSequence,emptySequence);
+        assertFalse(searchResult.isFound());
+        assertEquals(positionNotFound,searchResult.getPosition());
     }
 }
