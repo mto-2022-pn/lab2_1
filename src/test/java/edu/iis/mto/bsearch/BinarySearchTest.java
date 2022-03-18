@@ -13,8 +13,7 @@ class BinarySearchTest {
     void setUp() throws Exception {}
 
     @Test
-    @DisplayName("Jest w sekwencji i dł.sekwencji = 1")
-    void test1() {
+    void searchForExistingElem_singleElemSequence_findsItsPosition() {
         int key=11;
         int [] seq = {11};
         SearchResult searchResult=BinarySearch.search(key,seq);
@@ -22,8 +21,7 @@ class BinarySearchTest {
         assertEquals(1,searchResult.getPosition());
     }
     @Test
-    @DisplayName("Nie ma w sekwencji i dł.sekwencji = 1")
-    void test2() {
+    void searchForNotExistingElem_singleElemSequence() {
         int key=11;
         int [] seq = {7};
         SearchResult searchResult=BinarySearch.search(key,seq);
@@ -31,8 +29,7 @@ class BinarySearchTest {
         assertEquals(-1,searchResult.getPosition());
     }
     @Test
-    @DisplayName("Jest pierwszym elementem i dł.sekwencji > 1")
-    void test3() {
+    void searchForExistingElem_multiElemSequence_ElemIsOnFirstPosition() {
         int key=2;
         int [] seq = {2,4,6,8,10};
         SearchResult searchResult=BinarySearch.search(key,seq);
@@ -40,8 +37,7 @@ class BinarySearchTest {
         assertEquals(1,searchResult.getPosition());
     }
     @Test
-    @DisplayName("Jest ostatnim elementem i dł.sekwencji > 1")
-    void test4() {
+    void searchForExistingElem_multiElemSequence_ElemIsOnLastPosition() {
         int key=10;
         int [] seq = {2,4,6,8,10};
         SearchResult searchResult=BinarySearch.search(key,seq);
@@ -49,8 +45,7 @@ class BinarySearchTest {
         assertEquals(5,searchResult.getPosition());
     }
     @Test
-    @DisplayName("Jest środkowym elementem i dł.sekwencji > 1")
-    void test5() {
+    void searchForExistingElem_multiElemSequence_ElemIsOnMiddlePosition() {
         int key=6;
         int [] seq = {2,4,6,8,10};
         int center = (seq.length-1)/2 + 1;
@@ -59,8 +54,7 @@ class BinarySearchTest {
         assertEquals(center,searchResult.getPosition());
     }
     @Test
-    @DisplayName("Nie ma w sekwencji i dł.sekwencji > 1")
-    void test6() {
+    void searchForNotExistingElem_multiElemSequence() {
         int key=5;
         int [] seq = {2,4,6,8,10};
         SearchResult searchResult=BinarySearch.search(key,seq);
@@ -68,4 +62,17 @@ class BinarySearchTest {
         assertEquals(-1,searchResult.getPosition());
     }
 
+    @Test
+    void searchForIllegalArgumentException() {
+        int key=3;
+        int [] seq = {};
+        try{
+            SearchResult searchResult=BinarySearch.search(key,seq);
+
+            fail("expected IllegalArgumentException");
+        }catch (IllegalArgumentException e){
+
+        }
+
+    }
 }
