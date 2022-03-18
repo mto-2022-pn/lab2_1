@@ -40,5 +40,15 @@ class BinarySearchTest {
         assertTrue(searchResult.isFound());
         assertEquals(1,searchResult.getPosition());
     }
+    @Test
+    @DisplayName("Jest ostatnim elementem i dł.sekwencji > 1")
+    void test4() {
+        int key=10;
+        int [] seq = {2,4,6,8,10};
+        SearchResult searchResult=BinarySearch.search(key,seq);
+        System.out.println(searchResult);
+        assertTrue(searchResult.isFound());
+        assertEquals(5,searchResult.getPosition());
+    }
 
 }
