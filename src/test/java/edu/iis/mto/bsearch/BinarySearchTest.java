@@ -36,7 +36,6 @@ class BinarySearchTest {
         int key=2;
         int [] seq = {2,4,6,8,10};
         SearchResult searchResult=BinarySearch.search(key,seq);
-        System.out.println(searchResult);
         assertTrue(searchResult.isFound());
         assertEquals(1,searchResult.getPosition());
     }
@@ -46,9 +45,18 @@ class BinarySearchTest {
         int key=10;
         int [] seq = {2,4,6,8,10};
         SearchResult searchResult=BinarySearch.search(key,seq);
-        System.out.println(searchResult);
         assertTrue(searchResult.isFound());
         assertEquals(5,searchResult.getPosition());
+    }
+    @Test
+    @DisplayName("Jest środkowym elementem i dł.sekwencji > 1")
+    void test5() {
+        int key=6;
+        int [] seq = {2,4,6,8,10};
+        int center = (seq.length-1)/2 + 1;
+        SearchResult searchResult=BinarySearch.search(key,seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(center,searchResult.getPosition());
     }
 
 }
