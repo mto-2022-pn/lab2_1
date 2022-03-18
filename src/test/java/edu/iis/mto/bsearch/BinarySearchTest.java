@@ -58,5 +58,14 @@ class BinarySearchTest {
         assertTrue(searchResult.isFound());
         assertEquals(center,searchResult.getPosition());
     }
+    @Test
+    @DisplayName("Nie ma w sekwencji i dł.sekwencji > 1")
+    void test6() {
+        int key=5;
+        int [] seq = {2,4,6,8,10};
+        SearchResult searchResult=BinarySearch.search(key,seq);
+        assertFalse(searchResult.isFound());
+        assertEquals(-1,searchResult.getPosition());
+    }
 
 }
