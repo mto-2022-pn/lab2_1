@@ -12,8 +12,26 @@ class BinarySearchTest {
     void setUp() throws Exception {}
 
     @Test
-    void test() {
-        fail("Not yet implemented");
+    void seqLengthIsOne_keyInSeq() {
+        int key = 1;
+        int[] seq = {key};
+
+        SearchResult result = BinarySearch.search(key, seq);
+
+        assertTrue(result.isFound());
+        assertEquals(0, result.getPosition());
+        assertEquals(key, seq[result.getPosition()]);
+    }
+
+    @Test
+    void seqLengthIsOne_keyNotInSeq() {
+        int key = 1;
+        int[] seq = {key};
+
+        SearchResult result = BinarySearch.search(key + 1, seq);
+
+        assertFalse(result.isFound());
+        assertEquals(-1, result.getPosition());
     }
 
 }
