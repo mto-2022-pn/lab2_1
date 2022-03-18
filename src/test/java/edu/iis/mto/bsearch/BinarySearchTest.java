@@ -30,5 +30,15 @@ class BinarySearchTest {
         assertFalse(searchResult.isFound());
         assertEquals(-1,searchResult.getPosition());
     }
+    @Test
+    @DisplayName("Jest pierwszym elementem i dł.sekwencji > 1")
+    void test3() {
+        int key=2;
+        int [] seq = {2,4,6,8,10};
+        SearchResult searchResult=BinarySearch.search(key,seq);
+        System.out.println(searchResult);
+        assertTrue(searchResult.isFound());
+        assertEquals(1,searchResult.getPosition());
+    }
 
 }
