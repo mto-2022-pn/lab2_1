@@ -13,13 +13,22 @@ class BinarySearchTest {
     void setUp() throws Exception {}
 
     @Test
-    @DisplayName("Jest w sekwencji i dł = 1")
+    @DisplayName("Jest w sekwencji i dł.sekwencji = 1")
     void test1() {
         int key=11;
         int [] seq = {11};
         SearchResult searchResult=BinarySearch.search(key,seq);
         assertTrue(searchResult.isFound());
         assertEquals(1,searchResult.getPosition());
+    }
+    @Test
+    @DisplayName("Nie ma w sekwencji i dł.sekwencji = 1")
+    void test2() {
+        int key=11;
+        int [] seq = {7};
+        SearchResult searchResult=BinarySearch.search(key,seq);
+        assertFalse(searchResult.isFound());
+        assertEquals(-1,searchResult.getPosition());
     }
 
 }
