@@ -57,7 +57,31 @@ class BinarySearchTest {
     void notExistingElem_multipleItemSequence() {
         int[] seq = new int[]{1,4,6,8,12,14,18,34,65};
         SearchResult searchResult = BinarySearch.search(17, seq);
-        assertTrue(searchResult.isFound());
+        assertFalse(searchResult.isFound());
         assertEquals(-1, searchResult.getPosition());
     }
+
+    @Test
+    void noSequence() {
+        assertThrows(NullPointerException.class, ()-> {
+            SearchResult searchResult = BinarySearch.search(17, null);
+        });
+    }
+
+    @Test
+    void itemSequence_notSorted() {
+        int[] seq = new int[]{1,41,2,8,26,14,8,34,65};
+        assertThrows(IllegalArgumentException.class, ()-> {
+            SearchResult searchResult = BinarySearch.search(1, seq);
+        });
+    }
+
+    @Test
+    void itemSequence_itemsRepeats() {
+        int[] seq = new int[]{1,4,8,8,12,14,23,34,65};
+        assertThrows(IllegalArgumentException.class, ()-> {
+            SearchResult searchResult = BinarySearch.search(1, seq);
+        });
+    }
+
 }
