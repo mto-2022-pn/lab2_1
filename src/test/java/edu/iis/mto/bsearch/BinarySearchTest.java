@@ -9,15 +9,9 @@ import org.junit.jupiter.api.Test;
 class BinarySearchTest {
 
     SearchResult result;
-    private final int[] input = {0, 1, 2, 3, 4, 5};
     @BeforeEach
     void setUp() throws Exception {
         
-    }
-
-    @Test
-    void test() {
-        fail("Not yet implemented");
     }
     
     @Test
@@ -45,7 +39,7 @@ class BinarySearchTest {
     void test_03()
     {
         int key = 0;
-        int[] seq = {0, 1, 2, 3, 4, 5}; 
+        int[] seq = {0, 1, 2, 3, 4, 5, 6}; 
         result = BinarySearch.search(key, seq);
         assertTrue(result.isFound());
         assertTrue(seq[result.getPosition()] == key);
@@ -54,8 +48,8 @@ class BinarySearchTest {
     @Test
     void test_04()
     {
-        int key = 5;
-        int[] seq = {0, 1, 2, 3, 4, 5};
+        int key = 6;
+        int[] seq = {0, 1, 2, 3, 4, 5, 6};
         result = BinarySearch.search(key, seq);
         assertTrue(result.isFound());
         assertTrue(seq[result.getPosition()] == key);
@@ -65,7 +59,7 @@ class BinarySearchTest {
     void test_05()
     {
         int key = 3;
-        int[] seq = {0, 1, 2, 3, 4, 5};
+        int[] seq = {0, 1, 2, 3, 4, 5, 6};
         result = BinarySearch.search(key, seq);
         assertTrue(result.isFound());
         assertTrue(seq[result.getPosition()] == key);
@@ -75,7 +69,7 @@ class BinarySearchTest {
     void test_06()
     {
         int key = 7;
-        int[] seq = {0, 1, 2, 3, 4, 5};
+        int[] seq = {0, 1, 2, 3, 4, 5, 6};
         result = BinarySearch.search(key, seq);
         assertFalse(result.isFound());
         assertTrue(result.getPosition() == -1);
