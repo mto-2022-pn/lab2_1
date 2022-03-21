@@ -66,4 +66,20 @@ class BinarySearchTest {
         int[] seq = {};
         assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(12, seq));
     }
+
+    @Test
+    void TestPairSizeSequenceSmallerElemSearch() {
+        int[] seq = {2, 4, 5, 7};
+        SearchResult result = BinarySearch.search(4, seq);
+        assertTrue(result.isFound());
+        assertEquals(result.getPosition(), 1);
+    }
+
+    @Test
+    void TestPairSizeSequenceBiggerElemSearch() {
+        int[] seq = {2, 4, 5, 7};
+        SearchResult result = BinarySearch.search(5, seq);
+        assertTrue(result.isFound());
+        assertEquals(result.getPosition(), 2);
+    }
 }
