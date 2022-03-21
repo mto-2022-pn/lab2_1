@@ -28,4 +28,13 @@ class BinarySearchTest {
         assertFalse(searchResult.isFound());
         assertEquals(-1, searchResult.getPosition());
     }
+
+    @Test
+    void keyElementsIsFirstElementInInSequence() {
+        int key = 11;
+        int[] seq = { 11,22,33,123,452 };
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq[searchResult.getPosition()], key);
+    }
 }
