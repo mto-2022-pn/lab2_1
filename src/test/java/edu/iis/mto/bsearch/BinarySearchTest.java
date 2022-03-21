@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 class BinarySearchTest {
-
+    // .
     SearchResult result;
     @BeforeEach
     void setUp() throws Exception {
