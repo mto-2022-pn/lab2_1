@@ -2,6 +2,7 @@ package edu.iis.mto.bsearch;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -65,16 +66,30 @@ class BinarySearchTest {
         assertEquals(result.getPosition(), -1);
     }
 
-//    @Test
-//    void SeqLenIsZero() {
-//        int key = 3;
-//        int[] seq = {};
-//        try {
-//            SearchResult result = BinarySearch.search(key, seq);
-//        }
-//        catch (IllegalArgumentException e) {
-//
-//        }
-//
-//    }
+    @Test
+    void seqLenIsZero() {
+        int key = 3;
+        int[] seq = {};
+        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () ->{
+            SearchResult result = BinarySearch.search(key, seq);
+        });
+    }
+
+    @Test
+    void seqNotSorted() {
+        int key = 5;
+        int[] seq = {4, 6, 1, 0};
+        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () ->{
+            SearchResult result = BinarySearch.search(key, seq);
+        });
+    }
+
+    @Test
+    void seqHaveDuplicates() {
+        int key = 6;
+        int[] seq = {1, 3, 3, 6};
+        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () ->{
+            SearchResult result = BinarySearch.search(key, seq);
+        });
+    }
 }

@@ -22,6 +22,11 @@ public class BinarySearch {
      *         sekwencji, jezeli nie znaleziony -1)
      */
     public static SearchResult search(int key, int[] seq) {
+        if (seq.length == 0) {
+            throw new IllegalArgumentException();
+        }
+        ValidateSequence(seq);
+
         int start = 0;
         int end = seq.length - 1;
         int center;
@@ -43,4 +48,11 @@ public class BinarySearch {
         return result;
     }
 
+    private static void ValidateSequence(int[] seq) {
+        for (int i = 1; i < seq.length; i++) {
+            if (seq[i] <= seq[i-1]) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
