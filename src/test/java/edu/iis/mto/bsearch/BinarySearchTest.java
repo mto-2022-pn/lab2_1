@@ -20,7 +20,6 @@ class BinarySearchTest {
         assertEquals(1, searchResult.getPosition());
     }
 
-
     @Test
     void notExistingElem_singleItemSequence() {
         int[] seq = new int[1];
@@ -28,5 +27,21 @@ class BinarySearchTest {
         SearchResult searchResult = BinarySearch.search(8, seq);
         assertFalse(searchResult.isFound());
         assertEquals(-1, searchResult.getPosition());
+    }
+
+    @Test
+    void searchForExistingElem_atFirstPosition_multipleItemSequence() {
+        int[] seq = new int[]{1,4,6,8,12,14,18,34,65};
+        SearchResult searchResult = BinarySearch.search(seq[0], seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(1, searchResult.getPosition());
+    }
+
+    @Test
+    void searchForExistingElem_atLastPosition_multipleItemSequence() {
+        int[] seq = new int[]{1,4,6,8,12,14,18,34,65};
+        SearchResult searchResult = BinarySearch.search(seq[seq.length-1], seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq.length, searchResult.getPosition());
     }
 }
