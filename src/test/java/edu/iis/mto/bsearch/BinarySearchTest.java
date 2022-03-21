@@ -2,44 +2,57 @@ package edu.iis.mto.bsearch;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Random;
 
 class BinarySearchTest {
+    int seqLength;
+    int seq[];
+    Random rand;
 
     @BeforeEach
-    void setUp() throws Exception {}
+    void setup() throws Exception {
+        rand = new Random();
+
+        seqLength = rand.nextInt(998) + 2;
+        seq = rand.ints(seqLength).toArray();
+
+        Arrays.sort(seq);
+    }
 
     @Test
     void seqLengthIsZero_throwsException() {
-        int key = 10;
-        int[] seq = new int[0];
+        int key = rand.nextInt();
+        int[] zeroElemSeq = new int[0];
 
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
-            SearchResult result = BinarySearch.search(key, seq);
+            SearchResult result = BinarySearch.search(key, zeroElemSeq);
         });
         assertEquals("Sequence is empty", e.getMessage());
     }
 
     @Test
     void seqLengthIsOne_keyInSeq() {
-        int key = 10;
-        int[] seq = {key};
+        int key = rand.nextInt();
+        int[] singleElemSeq = {key};
 
-        SearchResult result = BinarySearch.search(key, seq);
+        SearchResult result = BinarySearch.search(key, singleElemSeq);
 
         assertTrue(result.isFound());
         assertEquals(0, result.getPosition());
-        assertEquals(key, seq[result.getPosition()]);
+        assertEquals(key, singleElemSeq[result.getPosition()]);
     }
 
     @Test
     void seqLengthIsOne_keyNotInSeq() {
-        int key = 10;
-        int[] seq = {key};
+        int key = rand.nextInt();
+        int[] singleElemSeq = {key + 1};
 
-        SearchResult result = BinarySearch.search(key + 1, seq);
+        SearchResult result = BinarySearch.search(key, singleElemSeq);
 
         assertFalse(result.isFound());
         assertEquals(-1, result.getPosition());
@@ -47,8 +60,7 @@ class BinarySearchTest {
 
     @Test
     void seqLengthGreaterThanOne_keyFirstInSeq() {
-        int key = 10;
-        int[] seq = {key, 20, 30};
+        int key = seq[0];
 
         SearchResult result = BinarySearch.search(key, seq);
 
@@ -59,8 +71,7 @@ class BinarySearchTest {
 
     @Test
     void seqLengthGreaterThanOne_keyLastInSeq() {
-        int key = 30;
-        int[] seq = {10, 20, key};
+        int key = seq[seq.length - 1];
 
         SearchResult result = BinarySearch.search(key, seq);
 
@@ -71,8 +82,8 @@ class BinarySearchTest {
 
     @Test
     void seqLengthGreaterThanOne_keyInMiddleOfSeq() {
-        int key = 20;
-        int[] seq = {10, key, 30};
+        int randomMiddleIndex = rand.nextInt(seq.length - 3) + 1;
+        int key = seq[randomMiddleIndex];
 
         SearchResult result = BinarySearch.search(key, seq);
 
@@ -84,8 +95,7 @@ class BinarySearchTest {
 
     @Test
     void seqLengthGreaterThanOne_keyNotInSeq() {
-        int key = 20;
-        int[] seq = {10, 30, 40};
+        int key = seq[0] - 1;
 
         SearchResult result = BinarySearch.search(key, seq);
 
