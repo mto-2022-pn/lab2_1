@@ -82,4 +82,10 @@ class BinarySearchTest {
         assertTrue(result.isFound());
         assertEquals(result.getPosition(), 2);
     }
+
+    @Test
+    void TestWithNotSortedSequence() {
+        int[] seq = {1, 3, 2, 4};
+        assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(2, seq));
+    }
 }
