@@ -99,6 +99,40 @@ class BinarySearchTest {
         NullPointerException thrown = Assertions.assertThrows(NullPointerException.class, () -> {
             BinarySearch.search(key, null);
         });
-        
+
     }
+
+    @Test
+    void binarySearchTesting_OddNumberOfElementsInSequence() {
+        int mainKey = 99, supportKey1 = 98, supportKey2 = 100;
+        int[] seq = { -4, 4, 45, 98, 99, 100, 2560, 8988, 18987 };
+        SearchResult searchResult = BinarySearch.search(mainKey, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq[searchResult.getPosition()], mainKey);
+        searchResult = BinarySearch.search(supportKey1, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq[searchResult.getPosition()], supportKey1);
+        searchResult = BinarySearch.search(supportKey2, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq[searchResult.getPosition()], supportKey2);
+    }
+
+    @Test
+    void binarySearchTesting_EvenNumberOfElementsInSequence() {
+        int mainKey = 2, supportKey1 = 1, supportKey2 = 98, supportKey3 = 112;
+        int[] seq = { -3, -2, -1, 0, 1, 2, 98, 112, 777, 888, 999, 1000 };
+        SearchResult searchResult = BinarySearch.search(mainKey, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq[searchResult.getPosition()], mainKey);
+        searchResult = BinarySearch.search(supportKey1, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq[searchResult.getPosition()], supportKey1);
+        searchResult = BinarySearch.search(supportKey2, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq[searchResult.getPosition()], supportKey2);
+        searchResult = BinarySearch.search(supportKey3, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq[searchResult.getPosition()], supportKey3);
+    }
+
 }
