@@ -75,4 +75,5 @@ class BinarySearchTest {
         assertTrue(searchResult.isFound());
         assertEquals(elementInMultipleSameElementsSequence,sequenceWithMultipleSameElements[searchResult.getPosition()]);
     }
+
 }
