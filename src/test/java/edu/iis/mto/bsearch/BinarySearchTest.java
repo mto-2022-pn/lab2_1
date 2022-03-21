@@ -9,11 +9,19 @@ import org.junit.jupiter.api.Test;
 class BinarySearchTest {
 
     @BeforeEach
-    void setUp() throws Exception {}
+    void setUp() throws Exception {
+        BinarySearch searcher = new BinarySearch(); 
+    }
 
     @Test
     void test() {
         fail("Not yet implemented");
+    }
+    
+    @Test
+    void test_v1()
+    {
+
     }
 
 }
