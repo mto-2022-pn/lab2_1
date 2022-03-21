@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 
 class BinarySearchTest {
     int[] sequenceWithOneElement = new int[]{13};
@@ -22,6 +24,8 @@ class BinarySearchTest {
     int lastElementInMultipleElementsSequence = sequenceWithMultipleElements[sequenceWithMultipleElements.length-1];
     int middleElementInMultipleElementsSequence = sequenceWithMultipleElements[sequenceWithMultipleElements.length/2];
     int invalidKeyInMultipleElementsSequence = 555;
+
+    Random random = new Random();
 
     @BeforeEach
     void setUp() throws Exception {}
@@ -75,5 +79,57 @@ class BinarySearchTest {
         assertTrue(searchResult.isFound());
         assertEquals(elementInMultipleSameElementsSequence,sequenceWithMultipleSameElements[searchResult.getPosition()]);
     }
+    @Test
+    void keyIsInSequenceWithRandomAscendingElements()
+    {
+        int amount = random.nextInt(10)+1;
+        int[] sequence = new int[amount];
+        int valueMin = 0;
+        for (int i=0; i<amount;i++)
+        {
+            sequence[i] = valueMin + random.nextInt(25) + 1;
+            valueMin = sequence[i];
+        }
+        int keyPosition = random.nextInt(amount);
+        int key = sequence[keyPosition];
+        SearchResult searchResult = BinarySearch.search(key,sequence);
+        assertTrue(searchResult.isFound());
+        assertEquals(keyPosition,searchResult.getPosition());
+    }
 
+    @Test
+    void keyIsLastElementInSequenceWithRandomAscendingElements()
+    {
+        int amount = random.nextInt(10)+1;
+        int[] sequence = new int[amount];
+        int valueMin = 0;
+        for (int i=0; i<amount;i++)
+        {
+            sequence[i] = valueMin + random.nextInt(25) + 1;
+            valueMin = sequence[i];
+        }
+        int keyPosition = amount-1;
+        int key = sequence[keyPosition];
+        SearchResult searchResult = BinarySearch.search(key,sequence);
+        assertTrue(searchResult.isFound());
+        assertEquals(keyPosition,searchResult.getPosition());
+    }
+
+    @Test
+    void keyIsFirstElementInSequenceWithRandomAscendingElements()
+    {
+        int amount = random.nextInt(10)+1;
+        int[] sequence = new int[amount];
+        int valueMin = 0;
+        for (int i=0; i<amount;i++)
+        {
+            sequence[i] = valueMin + random.nextInt(25) + 1;
+            valueMin = sequence[i];
+        }
+        int keyPosition = 0;
+        int key = sequence[keyPosition];
+        SearchResult searchResult = BinarySearch.search(key,sequence);
+        assertTrue(searchResult.isFound());
+        assertEquals(keyPosition,searchResult.getPosition());
+    }
 }
