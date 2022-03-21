@@ -64,9 +64,9 @@ class BinarySearchTest {
     }
     @Test
     void sequenceIsEmpty(){
-        SearchResult searchResult = BinarySearch.search(validKeyInOneElementSequence,emptySequence);
-        assertFalse(searchResult.isFound());
-        assertEquals(positionNotFound,searchResult.getPosition());
+        assertThrows(IllegalArgumentException.class, ()-> {
+            BinarySearch.search(validKeyInOneElementSequence, emptySequence);
+        });
     }
     @Test
     void sequenceHasMultipleSameElements()
