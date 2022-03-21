@@ -84,4 +84,53 @@ class BinarySearchTest {
         });
     }
 
+    @Test
+    void searchForExistingElem_beforeMiddlePosition_multipleItemSequence_evenQuantity() {
+        int[] seq = new int[]{1,4,6,8,14,18,34,65};
+        SearchResult searchResult = BinarySearch.search(seq[(seq.length)/2 - 1], seq);
+        assertTrue(searchResult.isFound());
+        assertEquals((seq.length)/2 - 1, searchResult.getPosition());
+    }
+
+    @Test
+    void searchForExistingElem_atMiddlePosition_multipleItemSequence_evenQuantity() {
+        int[] seq = new int[]{1,4,6,8,14,18,34,65};
+        SearchResult searchResult = BinarySearch.search(seq[(seq.length)/2], seq);
+        assertTrue(searchResult.isFound());
+        assertEquals((seq.length)/2, searchResult.getPosition());
+    }
+
+    @Test
+    void searchForExistingElem_afterMiddlePosition_multipleItemSequence_evenQuantity() {
+        int[] seq = new int[]{1,4,6,8,14,18,34,65};
+        SearchResult searchResult = BinarySearch.search(seq[(seq.length)/2 + 1], seq);
+        assertTrue(searchResult.isFound());
+        assertEquals((seq.length)/2 + 1, searchResult.getPosition());
+    }
+
+    @Test
+    void searchForExistingElem_beforeMiddlePosition_multipleItemSequence_notEvenQuantity() {
+        int[] seq = new int[]{1,4,6,8,11,14,18,34,65};
+        SearchResult searchResult = BinarySearch.search(seq[(seq.length)/2 - 1], seq);
+        assertTrue(searchResult.isFound());
+        assertEquals((seq.length)/2 - 1, searchResult.getPosition());
+    }
+
+    @Test
+    void searchForExistingElem_atMiddlePosition_multipleItemSequence_notEvenQuantity() {
+        int[] seq = new int[]{1,4,6,8,11,14,18,34,65};
+        SearchResult searchResult = BinarySearch.search(seq[(seq.length)/2], seq);
+        assertTrue(searchResult.isFound());
+        assertEquals((seq.length)/2, searchResult.getPosition());
+    }
+
+    @Test
+    void searchForExistingElem_afterMiddlePosition_multipleItemSequence_notEvenQuantity() {
+        int[] seq = new int[]{1,4,6,8,11,14,18,34,65};
+        SearchResult searchResult = BinarySearch.search(seq[(seq.length)/2 + 1], seq);
+        assertTrue(searchResult.isFound());
+        assertEquals((seq.length)/2 + 1, searchResult.getPosition());
+    }
+
+
 }
