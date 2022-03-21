@@ -71,9 +71,16 @@ class BinarySearchTest {
         assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(key, sequence));
     }
     @Test
-    void TestIfSequenceIsContainsDuplicates() {
+    void TestIfSequenceContainsDuplicates() {
         int[] sequence = { 2, 3, 3, 5, 7, 13 };
         int key = 1;
         assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(key, sequence));
+    }
+    @Test
+    void TestManyElementsInSequenceIsPresentAtTheDirectlyMiddle() {
+        int[] sequence = { -17, -13, -8, -3, -2, -1 };
+        int key = -8;
+        SearchResult result = BinarySearch.search(key, sequence);
+        assertTrue(result.isFound() && sequence[result.getPosition()] == key);
     }
 }
