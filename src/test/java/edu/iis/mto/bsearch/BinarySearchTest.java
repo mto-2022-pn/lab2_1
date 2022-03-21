@@ -18,7 +18,8 @@ class BinarySearchTest {
         int [] seq = {11};
         SearchResult searchResult=BinarySearch.search(key,seq);
         assertTrue(searchResult.isFound());
-        assertEquals(1,searchResult.getPosition());
+        assertEquals(0,searchResult.getPosition());
+        assertEquals(key,seq[searchResult.getPosition()]);
     }
     @Test
     void searchForNotExistingElem_singleElemSequence() {
@@ -34,7 +35,7 @@ class BinarySearchTest {
         int [] seq = {2,4,6,8,10,12,14};
         SearchResult searchResult=BinarySearch.search(key,seq);
         assertTrue(searchResult.isFound());
-        assertEquals(1,searchResult.getPosition());
+        assertEquals(0,searchResult.getPosition());
     }
     @Test
     void searchForExistingElem_multiElemSequence_ElemIsOnLastPosition() {
@@ -42,13 +43,13 @@ class BinarySearchTest {
         int [] seq = {2,4,6,8,7,10};
         SearchResult searchResult=BinarySearch.search(key,seq);
         assertTrue(searchResult.isFound());
-        assertEquals(6,searchResult.getPosition());
+        assertEquals(5,searchResult.getPosition());
     }
     @Test
     void searchForExistingElem_multiElemSequence_ElemIsOnMiddlePosition() {
         int key=6;
         int [] seq = {2,4,6,8,10};
-        int center = (seq.length-1)/2 + 1;
+        int center = (seq.length-1)/2 ;
         SearchResult searchResult=BinarySearch.search(key,seq);
         assertTrue(searchResult.isFound());
         assertEquals(center,searchResult.getPosition());
