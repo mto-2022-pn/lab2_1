@@ -9,6 +9,14 @@ package edu.iis.mto.bsearch;
  */
 public class BinarySearch {
 
+    private static boolean isSorted(int[] seq) {
+        for (int i = 0; i < seq.length - 1; ++i) {
+            if (seq[i] > seq[i + 1])
+                return false;
+        }
+        return true;
+    }
+
     private BinarySearch() {}
 
     /**
@@ -22,6 +30,8 @@ public class BinarySearch {
      *         sekwencji, jezeli nie znaleziony -1)
      */
     public static SearchResult search(int key, int[] seq) {
+        if (seq.length < 1 || !isSorted(seq))
+            throw new IllegalArgumentException();
         int start = 0;
         int end = seq.length - 1;
         int center;
@@ -30,7 +40,7 @@ public class BinarySearch {
         while (start <= end) {
             center = (start + end) / 2;
             if (seq[center] == key) {
-                result.setPosition(center + 1);
+                result.setPosition(center);
                 break;
             } else {
                 if (seq[center] < key) {
