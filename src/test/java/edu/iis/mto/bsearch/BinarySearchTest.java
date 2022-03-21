@@ -17,7 +17,7 @@ class BinarySearchTest {
         int[] seq = {4};
         SearchResult result = BinarySearch.search(key, seq);
         assertTrue(result.isFound());
-        assertEquals(result.getPosition(), 1);
+        assertEquals(result.getPosition(), 0);
     }
 
     @Test
@@ -35,7 +35,7 @@ class BinarySearchTest {
         int[] seq = {3, 5, 45, 55, 78};
         SearchResult result = BinarySearch.search(key, seq);
         assertTrue(result.isFound());
-        assertEquals(result.getPosition(), 1);
+        assertEquals(result.getPosition(), 0);
     }
 
     @Test
@@ -44,7 +44,7 @@ class BinarySearchTest {
         int[] seq = {3, 5, 45, 55, 78};
         SearchResult result = BinarySearch.search(key, seq);
         assertTrue(result.isFound());
-        assertEquals(result.getPosition(), seq.length);
+        assertEquals(result.getPosition(), seq.length-1);
     }
 
     @Test
@@ -53,7 +53,7 @@ class BinarySearchTest {
         int[] seq = {3, 5, 45, 55, 78};
         SearchResult result = BinarySearch.search(key, seq);
         assertTrue(result.isFound());
-        assertEquals(result.getPosition(), 3);
+        assertEquals(result.getPosition(), 2);
     }
 
     @Test
@@ -64,4 +64,17 @@ class BinarySearchTest {
         assertFalse(result.isFound());
         assertEquals(result.getPosition(), -1);
     }
+
+//    @Test
+//    void SeqLenIsZero() {
+//        int key = 3;
+//        int[] seq = {};
+//        try {
+//            SearchResult result = BinarySearch.search(key, seq);
+//        }
+//        catch (IllegalArgumentException e) {
+//
+//        }
+//
+//    }
 }
