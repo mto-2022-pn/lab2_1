@@ -60,4 +60,10 @@ class BinarySearchTest {
         assertFalse(result.isFound());
         assertEquals(result.getPosition(), -1);
     }
+
+    @Test
+    void TestEmptySeq() {
+        int[] seq = {};
+        assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(12, seq));
+    }
 }
