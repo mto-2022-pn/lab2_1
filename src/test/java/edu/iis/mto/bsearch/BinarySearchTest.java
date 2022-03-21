@@ -105,4 +105,20 @@ class BinarySearchTest {
         }catch (IllegalArgumentException e){
         }
     }
+    @Test
+    void searchForExistingElem_multiElemSequence_ElemIsOnMiddlePositionMinusOne() {
+        int key=6;
+        int [] seq = {2,4,6,8,10,13};
+        SearchResult searchResult=BinarySearch.search(key,seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(2,searchResult.getPosition());
+    }
+    @Test
+    void searchForExistingElem_multiElemSequence_ElemIsOnMiddlePositionPlusOne() {
+        int key=8;
+        int [] seq = {2,4,6,8,10,13};
+        SearchResult searchResult=BinarySearch.search(key,seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(3,searchResult.getPosition());
+    }
 }

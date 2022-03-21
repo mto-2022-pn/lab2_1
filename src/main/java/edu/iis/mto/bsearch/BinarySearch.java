@@ -50,5 +50,6 @@ public class BinarySearch {
         }
         return 0;
     }
+    //sprawdzenie środka -1 i +1 dla parzystej sekwencji
 
 }
