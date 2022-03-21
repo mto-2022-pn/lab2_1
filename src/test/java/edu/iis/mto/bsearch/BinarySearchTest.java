@@ -103,4 +103,39 @@ class BinarySearchTest {
         assertEquals(-1, result.getPosition());
     }
 
+    @Test
+    void seqLengthGreaterThanOne_keyInCenterOfSeq() {
+        int centralIndex = (seq.length - 1) / 2;
+        int key = seq[centralIndex];
+
+        SearchResult result = BinarySearch.search(key, seq);
+
+        assertTrue(result.isFound());
+        assertEquals(centralIndex, result.getPosition());
+        assertEquals(key, seq[result.getPosition()]);
+    }
+
+    @Test
+    void seqLengthGreaterThanOne_keyLeftToCenterOfSeq() {
+        int leftToCentralIndex = ((seq.length - 1) / 2) - 1;
+        int key = seq[leftToCentralIndex];
+
+        SearchResult result = BinarySearch.search(key, seq);
+
+        assertTrue(result.isFound());
+        assertEquals(leftToCentralIndex, result.getPosition());
+        assertEquals(key, seq[result.getPosition()]);
+    }
+
+    @Test
+    void seqLengthGreaterThanOne_keyRightToCenterOfSeq() {
+        int rightToCentralIndex = ((seq.length - 1) / 2) + 1;
+        int key = seq[rightToCentralIndex];
+
+        SearchResult result = BinarySearch.search(key, seq);
+
+        assertTrue(result.isFound());
+        assertEquals(rightToCentralIndex, result.getPosition());
+        assertEquals(key, seq[result.getPosition()]);
+    }
 }
