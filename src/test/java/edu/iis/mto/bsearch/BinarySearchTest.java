@@ -32,8 +32,8 @@ class BinarySearchTest {
 
     @Test
     void keyElementsIsFirstElementInInSequence() {
-        int key = 11;
-        int[] seq = { 11, 22, 33, 123, 452 };
+        int key = -11;
+        int[] seq = { -11, 22, 33, 123, 452 };
         SearchResult searchResult = BinarySearch.search(key, seq);
         assertTrue(searchResult.isFound());
         assertEquals(seq[searchResult.getPosition()], key);
@@ -67,32 +67,38 @@ class BinarySearchTest {
     }
 
     @Test
-    void testExpectedIllegalArgumentException_EmptySeq(){
+    void testExpectedIllegalArgumentException_EmptySeq() {
         int key = 1546;
         int[] seq = {};
-        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () ->
-        {
+        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             BinarySearch.search(key, seq);
         });
     }
 
     @Test
-    void testExpectedIllegalArgumentException_SeqNotSorted(){
+    void testExpectedIllegalArgumentException_SeqNotSorted() {
         int key = 1546;
-        int[] seq = {45,98784,4,17,87};
-        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () ->
-        {
+        int[] seq = { 45, 98784, 4, 17, 87 };
+        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             BinarySearch.search(key, seq);
         });
     }
 
     @Test
-    void testExpectedIllegalArgumentException_SeqWithDuplicats(){
+    void testExpectedIllegalArgumentException_SeqWithDuplicats() {
         int key = 1546;
-        int[] seq = {4,87,154,154,987};
-        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () ->
-        {
+        int[] seq = { 4, 87, 154, 154, 987 };
+        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             BinarySearch.search(key, seq);
         });
+    }
+
+    @Test
+    void testNullValues() {
+        int key = 7;
+        NullPointerException thrown = Assertions.assertThrows(NullPointerException.class, () -> {
+            BinarySearch.search(key, null);
+        });
+        
     }
 }
