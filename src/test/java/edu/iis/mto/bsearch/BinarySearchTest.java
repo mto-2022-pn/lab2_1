@@ -2,7 +2,6 @@ package edu.iis.mto.bsearch;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,11 +10,11 @@ import java.util.Random;
 
 class BinarySearchTest {
     int seqLength;
-    int seq[];
+    int[] seq;
     Random rand;
 
     @BeforeEach
-    void setup() throws Exception {
+    void setup() {
         rand = new Random();
 
         seqLength = rand.nextInt(998) + 2;
@@ -29,9 +28,7 @@ class BinarySearchTest {
         int key = rand.nextInt();
         int[] zeroElemSeq = new int[0];
 
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
-            SearchResult result = BinarySearch.search(key, zeroElemSeq);
-        });
+        Exception e = assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(key, zeroElemSeq));
         assertEquals("Sequence is empty", e.getMessage());
     }
 
