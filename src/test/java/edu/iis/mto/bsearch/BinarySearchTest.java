@@ -52,4 +52,12 @@ class BinarySearchTest {
         assertTrue(searchResult.isFound());
         assertEquals(seq.length/2, searchResult.getPosition());
     }
+
+    @Test
+    void notExistingElem_multipleItemSequence() {
+        int[] seq = new int[]{1,4,6,8,12,14,18,34,65};
+        SearchResult searchResult = BinarySearch.search(17, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(-1, searchResult.getPosition());
+    }
 }
