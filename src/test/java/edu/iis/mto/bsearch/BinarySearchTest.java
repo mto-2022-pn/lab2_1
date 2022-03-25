@@ -47,4 +47,16 @@ class BinarySearchTest {
         assertEquals(0, result.getPosition());
         assertEquals(key, seq[result.getPosition()]);
     }
+
+    @Test
+    void seqManyElementsKeyIsLast() {
+        int key = 15;
+        int[] seq = {1, 5, 8, 13, key};
+
+        SearchResult result = BinarySearch.search(key, seq);
+
+        assertTrue(result.isFound());
+        assertEquals(seq.length - 1, result.getPosition());
+        assertEquals(key, seq[result.getPosition()]);
+    }
 }
