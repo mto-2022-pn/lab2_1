@@ -59,4 +59,16 @@ class BinarySearchTest {
         assertEquals(seq.length - 1, result.getPosition());
         assertEquals(key, seq[result.getPosition()]);
     }
+
+    @Test
+    void seqManyElementsKeyIsMiddle() {
+        int key = 13;
+        int[] seq = {4, 7, key, 15, 18};
+
+        SearchResult result = BinarySearch.search(key, seq);
+
+        assertTrue(result.isFound());
+        assertEquals(seq.length/2, result.getPosition());
+        assertEquals(key, seq[result.getPosition()]);
+    }
 }
