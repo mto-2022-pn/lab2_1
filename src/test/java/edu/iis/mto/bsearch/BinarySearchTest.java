@@ -77,9 +77,16 @@ class BinarySearchTest {
         assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(key, sequence));
     }
     @Test
-    void TestManyElementsInSequenceIsPresentAtTheDirectlyMiddle() {
+    void TestManyElementsInEvenSequenceIsPresentAtTheDirectlyMiddle() {
         int[] sequence = { -17, -13, -8, -3, -2, -1 };
         int key = -8;
+        SearchResult result = BinarySearch.search(key, sequence);
+        assertTrue(result.isFound() && sequence[result.getPosition()] == key);
+    }
+    @Test
+    void TestManyElementsInOddSequenceIsPresentAtTheDirectlyMiddle() {
+        int[] sequence = { -19, -14, -1, 3, 12 };
+        int key = -1;
         SearchResult result = BinarySearch.search(key, sequence);
         assertTrue(result.isFound() && sequence[result.getPosition()] == key);
     }
