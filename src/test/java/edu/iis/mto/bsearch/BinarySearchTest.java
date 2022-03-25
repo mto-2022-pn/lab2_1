@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 class BinarySearchTest {
 
+    private static final int NOT_FOUND_ELEMENT = -1;
+
     @BeforeEach
     void setUp() throws Exception {}
 
@@ -21,6 +23,17 @@ class BinarySearchTest {
         assertTrue(result.isFound());
         assertEquals(0, result.getPosition());
         assertEquals(key, seq[result.getPosition()]);
+    }
+
+    @Test
+    void seqOneElementIsNotInSeq() {
+        int key = 3;
+        int[] seq = { key + 3};
+
+        SearchResult result = BinarySearch.search(key, seq);
+
+        assertFalse(result.isFound());
+        assertEquals(NOT_FOUND_ELEMENT, result.getPosition());
     }
 
 }
