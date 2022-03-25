@@ -14,6 +14,19 @@ class BinarySearchTest {
     void setUp() throws Exception {}
 
     @Test
+    void seqEmptyThrowsException() {
+        int key = 7;
+        int[] seq = {};
+
+        IllegalArgumentException e = assertThrows(
+                IllegalArgumentException.class, () -> {
+                    SearchResult result = BinarySearch.search(key, seq);
+                });
+
+        assertEquals("Sequence is empty", e.getMessage());
+    }
+
+    @Test
     void seqOneElementIsInSeq() {
         int key = 2;
         int[] seq = {key};
