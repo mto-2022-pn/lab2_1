@@ -83,4 +83,14 @@ class BinarySearchTest {
             SearchResult searchResult = BinarySearch.search(element, seq);
         });
     }
+
+    @Test
+    void nullSeq(){
+        int element = 123;
+        int[] seq = null;
+
+        assertThrows(NullPointerException.class, () -> {
+            SearchResult searchResult = BinarySearch.search(element, seq);
+        });
+    }
 }
