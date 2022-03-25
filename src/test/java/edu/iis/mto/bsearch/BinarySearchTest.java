@@ -36,4 +36,15 @@ class BinarySearchTest {
         assertEquals(NOT_FOUND_ELEMENT, result.getPosition());
     }
 
+    @Test
+    void seqManyElementsKeyIsFirst() {
+        int key = 4;
+        int[] seq = {4, 5, 7, 12};
+
+        SearchResult result = BinarySearch.search(key, seq);
+
+        assertTrue(result.isFound());
+        assertEquals(0, result.getPosition());
+        assertEquals(key, seq[result.getPosition()]);
+    }
 }
