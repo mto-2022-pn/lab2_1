@@ -50,10 +50,17 @@ class BinarySearchTest {
         int[] seq = new int[]{8, 56, 23, 34, 51, 48, 23, 78};
 
         SearchResult searchResult = BinarySearch.search(element, seq);
-
         assertTrue(searchResult.isFound());
         assertEquals(seq.length, searchResult.getPosition());
     }
 
+    @Test
+    void middleElementInSeq() {
+        int element = 51;
+        int[] seq = new int[]{8, 56, 23, 34, 51, 48, 23, 78, 56};
 
+        SearchResult searchResult = BinarySearch.search(element, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(5, searchResult.getPosition());
+    }
 }
