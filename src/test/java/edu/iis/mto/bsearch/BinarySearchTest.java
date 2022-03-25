@@ -9,17 +9,28 @@ import org.junit.jupiter.api.Test;
 class BinarySearchTest {
 
     @BeforeEach
-    void setUp() throws Exception {}
+    void setUp() throws Exception {
+    }
 
     @Test
-    void oneElementInSeq(){
+    void oneElementInSeq() {
         int element = 20;
         int[] seq = new int[1];
-        seq[0]=element;
+        seq[0] = element;
 
-        SearchResult searchResult = BinarySearch.search(element,seq);
+        SearchResult searchResult = BinarySearch.search(element, seq);
         assertTrue(searchResult.isFound());
         assertEquals(1, searchResult.getPosition());
     }
 
+    @Test
+    void noElementInSeq() {
+        int element = 20;
+        int[] seq = new int[1];
+        seq[0] = 1;
+
+        SearchResult searchResult = BinarySearch.search(element, seq);
+        assertFalse(searchResult.isFound());
+        assertEquals(-1, searchResult.getPosition());
+    }
 }
