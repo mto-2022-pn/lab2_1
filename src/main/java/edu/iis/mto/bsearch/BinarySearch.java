@@ -32,6 +32,9 @@ public class BinarySearch {
             hashmap.put(seq[j], j);
         }
         if(hashmap.size()!=seq.length) throw new IllegalArgumentException();
+        for(int i=0;i<seq.length-1;i++){
+            if(seq[i]>seq[i+1]) throw new IllegalArgumentException();
+        }
         int start = 0;
         int end = seq.length - 1;
         int center;

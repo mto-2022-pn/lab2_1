@@ -112,6 +112,14 @@ class BinarySearchTest {
         });
     }
 
+    @Test
+    void ArrayIsNotAscSorted() {
+        int [] array = new int[]{3,2,1};
+        assertThrows(IllegalArgumentException.class, ()-> {
+            BinarySearch.search(1, array);
+        });
+    }
+
 
 
 
