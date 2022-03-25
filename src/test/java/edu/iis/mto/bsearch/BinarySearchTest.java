@@ -36,11 +36,24 @@ class BinarySearchTest {
 
     @Test
     void firstElementInSeq() {
-        int element = 20;
-        int[] seq = new int[]{20,5,623,46,853,415,23,1,78};
+        int element = 5;
+        int[] seq = new int[]{5, 78, 46, 45, 78, 23, 1, 21};
 
         SearchResult searchResult = BinarySearch.search(element, seq);
         assertTrue(searchResult.isFound());
-        assertEquals(1,searchResult.getPosition());
+        assertEquals(1, searchResult.getPosition());
     }
+
+    @Test
+    void lastElementInSeq() {
+        int element = 78;
+        int[] seq = new int[]{8, 56, 23, 34, 51, 48, 23, 78};
+
+        SearchResult searchResult = BinarySearch.search(element, seq);
+
+        assertTrue(searchResult.isFound());
+        assertEquals(seq.length, searchResult.getPosition());
+    }
+
+
 }
