@@ -71,4 +71,15 @@ class BinarySearchTest {
         assertEquals(seq.length/2, result.getPosition());
         assertEquals(key, seq[result.getPosition()]);
     }
+
+    @Test
+    void seqManyElementsKeyIsNotInSeq() {
+        int key = 10;
+        int[] seq = {1, 3, 6, 12, 17};
+
+        SearchResult result = BinarySearch.search(key, seq);
+
+        assertFalse(result.isFound());
+        assertEquals(NOT_FOUND_ELEMENT, result.getPosition());
+    }
 }
