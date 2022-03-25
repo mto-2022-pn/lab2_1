@@ -73,4 +73,14 @@ class BinarySearchTest {
         assertFalse(searchResult.isFound());
         assertEquals(-1, searchResult.getPosition());
     }
+
+    @Test
+    void emptySeq() {
+        int element = 123;
+        int[] seq = new int[]{};
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            SearchResult searchResult = BinarySearch.search(element, seq);
+        });
+    }
 }
