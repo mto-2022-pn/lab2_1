@@ -16,7 +16,7 @@ class BinarySearchTest {
     @Test
     void seqOneElementIsInSeq() {
         int key = 2;
-        int[] seq = {2};
+        int[] seq = {key};
 
         SearchResult result = BinarySearch.search(key, seq);
 
@@ -39,7 +39,7 @@ class BinarySearchTest {
     @Test
     void seqManyElementsKeyIsFirst() {
         int key = 4;
-        int[] seq = {4, 5, 7, 12};
+        int[] seq = {key, 5, 7, 12};
 
         SearchResult result = BinarySearch.search(key, seq);
 
