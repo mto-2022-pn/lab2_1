@@ -93,4 +93,14 @@ class BinarySearchTest {
             SearchResult searchResult = BinarySearch.search(element, seq);
         });
     }
+
+    @Test
+    void middleElementInEvenSeq(){
+        int element = 17;
+        int[] seq = new int[]{14, 17, 52, 89};
+
+        SearchResult searchResult = BinarySearch.search(element, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(2, searchResult.getPosition());
+    }
 }
