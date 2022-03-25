@@ -36,8 +36,8 @@ class BinarySearchTest {
 
     @Test
     void firstElementInSeq() {
-        int element = 5;
-        int[] seq = new int[]{5, 78, 46, 45, 78, 23, 1, 21};
+        int element = 1;
+        int[] seq = new int[]{1, 5, 21, 23, 45, 46, 78, 461};
 
         SearchResult searchResult = BinarySearch.search(element, seq);
         assertTrue(searchResult.isFound());
@@ -47,7 +47,7 @@ class BinarySearchTest {
     @Test
     void lastElementInSeq() {
         int element = 78;
-        int[] seq = new int[]{8, 56, 23, 34, 51, 48, 23, 78};
+        int[] seq = new int[]{8, 23, 23, 34, 48, 51, 56, 78};
 
         SearchResult searchResult = BinarySearch.search(element, seq);
         assertTrue(searchResult.isFound());
@@ -56,8 +56,8 @@ class BinarySearchTest {
 
     @Test
     void middleElementInSeq() {
-        int element = 51;
-        int[] seq = new int[]{8, 56, 23, 34, 51, 48, 23, 78, 56};
+        int element = 48;
+        int[] seq = new int[]{8, 23, 23, 34, 48, 51, 56, 56, 78};
 
         SearchResult searchResult = BinarySearch.search(element, seq);
         assertTrue(searchResult.isFound());
@@ -67,7 +67,7 @@ class BinarySearchTest {
     @Test
     void noElementInMultipleSeq() {
         int element = 25896;
-        int[] seq = new int[]{8, 56, 23, 34, 51, 48, 23, 78, 56};
+        int[] seq = new int[]{8, 23, 23, 34, 48, 51, 56, 56, 78};
 
         SearchResult searchResult = BinarySearch.search(element, seq);
         assertFalse(searchResult.isFound());
@@ -85,7 +85,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void nullSeq(){
+    void nullSeq() {
         int element = 123;
         int[] seq = null;
 
@@ -95,7 +95,7 @@ class BinarySearchTest {
     }
 
     @Test
-    void middleElementInEvenSeq(){
+    void middleElementInEvenSeq() {
         int element = 17;
         int[] seq = new int[]{14, 17, 52, 89};
 
@@ -105,12 +105,22 @@ class BinarySearchTest {
     }
 
     @Test
-    void middleElementInEvenSeqv2(){
+    void middleElementInEvenSeqv2() {
         int element = 52;
         int[] seq = new int[]{14, 17, 52, 89};
 
         SearchResult searchResult = BinarySearch.search(element, seq);
         assertTrue(searchResult.isFound());
         assertEquals(3, searchResult.getPosition());
+    }
+
+    @Test
+    void notSortedSeq(){
+        int element = 51;
+        int[] seq = new int[]{984,51,5165,56,51,513,17};
+        assertThrows(IllegalArgumentException.class, () -> {
+            SearchResult searchResult = BinarySearch.search(element, seq);
+        });
+
     }
 }
