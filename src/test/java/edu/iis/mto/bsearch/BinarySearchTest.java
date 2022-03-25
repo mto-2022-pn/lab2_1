@@ -5,17 +5,26 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Random;
+
 
 class BinarySearchTest {
 
     private static final int NOT_FOUND_ELEMENT = -1;
+    private int[] seq;
+    private Random random;
 
     @BeforeEach
-    void setUp() throws Exception {}
+    void setUp() throws Exception {
+        random = new Random();
+        seq = random.ints(random.nextInt(9999) + 2).toArray();
+        Arrays.sort(seq);
+    }
 
     @Test
     void seqNullThrowsException() {
-        int key = 7;
+        int key = random.nextInt();
         int[] seq = null;
 
         IllegalArgumentException e = assertThrows(
@@ -28,7 +37,7 @@ class BinarySearchTest {
 
     @Test
     void seqEmptyThrowsException() {
-        int key = 7;
+        int key = random.nextInt();
         int[] seq = {};
 
         IllegalArgumentException e = assertThrows(
@@ -41,7 +50,7 @@ class BinarySearchTest {
 
     @Test
     void seqOneElementIsInSeq() {
-        int key = 2;
+        int key = random.nextInt();
         int[] seq = {key};
 
         SearchResult result = BinarySearch.search(key, seq);
@@ -53,7 +62,7 @@ class BinarySearchTest {
 
     @Test
     void seqOneElementIsNotInSeq() {
-        int key = 3;
+        int key = random.nextInt();
         int[] seq = { key + 3};
 
         SearchResult result = BinarySearch.search(key, seq);
@@ -64,8 +73,7 @@ class BinarySearchTest {
 
     @Test
     void seqManyElementsKeyIsFirst() {
-        int key = 4;
-        int[] seq = {key, 5, 7, 12};
+        int key = seq[0];
 
         SearchResult result = BinarySearch.search(key, seq);
 
@@ -76,8 +84,7 @@ class BinarySearchTest {
 
     @Test
     void seqManyElementsKeyIsLast() {
-        int key = 15;
-        int[] seq = {1, 5, 8, 13, key};
+        int key = seq[seq.length - 1];
 
         SearchResult result = BinarySearch.search(key, seq);
 
@@ -88,20 +95,19 @@ class BinarySearchTest {
 
     @Test
     void seqManyElementsKeyIsMiddle() {
-        int key = 13;
-        int[] seq = {4, 7, key, 15, 18};
+        int index = random.nextInt(seq.length - 3) + 1;
+        int key = seq[index];
 
         SearchResult result = BinarySearch.search(key, seq);
 
         assertTrue(result.isFound());
-        assertEquals(seq.length/2, result.getPosition());
+        assertEquals(index, result.getPosition());
         assertEquals(key, seq[result.getPosition()]);
     }
 
     @Test
     void seqManyElementsKeyIsNotInSeq() {
-        int key = 10;
-        int[] seq = {1, 3, 6, 12, 17};
+        int key = seq[0] - 1;
 
         SearchResult result = BinarySearch.search(key, seq);
 
