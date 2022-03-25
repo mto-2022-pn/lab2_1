@@ -63,4 +63,14 @@ class BinarySearchTest {
         assertTrue(searchResult.isFound());
         assertEquals(5, searchResult.getPosition());
     }
+
+    @Test
+    void noElementInMultipleSeq() {
+        int element = 25896;
+        int[] seq = new int[]{8, 56, 23, 34, 51, 48, 23, 78, 56};
+
+        SearchResult searchResult = BinarySearch.search(element, seq);
+        assertFalse(searchResult.isFound());
+        assertEquals(-1, searchResult.getPosition());
+    }
 }
