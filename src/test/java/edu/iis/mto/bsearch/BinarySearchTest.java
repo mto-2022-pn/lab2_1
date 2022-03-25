@@ -114,4 +114,16 @@ class BinarySearchTest {
         assertFalse(result.isFound());
         assertEquals(NOT_FOUND_ELEMENT, result.getPosition());
     }
+
+    @Test
+    void seqManyElementsKeyInCenter() {
+        int center = (seq.length - 1) / 2;
+        int key = seq[center];
+
+        SearchResult result = BinarySearch.search(key, seq);
+
+        assertTrue(result.isFound());
+        assertEquals(center, result.getPosition());
+        assertEquals(key, seq[result.getPosition()]);
+    }
 }
