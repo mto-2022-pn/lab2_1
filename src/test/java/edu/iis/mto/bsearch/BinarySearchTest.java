@@ -15,7 +15,7 @@ class BinarySearchTest {
     public void setUp() throws Exception {
     }
     @Test
-    public void SequenceIsEmpty(){
+    public void sequenceIsEmpty(){
         int[] arr = new int[0];
         IllegalArgumentException e= assertThrows(IllegalArgumentException.class, ()->{
             BinarySearch.search(1, arr);
@@ -24,7 +24,7 @@ class BinarySearchTest {
     }
 
     @Test
-    public void SequenceIsNotSortedAsc(){
+    public void sequenceIsNotSortedAsc(){
         int[] arr = new int[]{4,2,1,5};
         IllegalArgumentException e= assertThrows(IllegalArgumentException.class, ()->{
             BinarySearch.search(1, arr);
@@ -33,7 +33,7 @@ class BinarySearchTest {
     }
 
     @Test
-    public void SequenceHasDupes(){
+    public void sequenceHasDupes(){
         Random random = new Random();
 
         int[] arr = new int[]{1,1,3,5};
@@ -51,7 +51,7 @@ class BinarySearchTest {
     }
 
     @Test
-    public void NotFoundInSequence() {
+    public void notFoundInSequence() {
         SearchResult sr = BinarySearch.search(2, new int[]{1});
         assertTrue(!sr.isFound() && sr.getPosition() == -1);
     }
@@ -63,20 +63,20 @@ class BinarySearchTest {
     }
 
     @Test
-    public void LastElementInSequence() {
+    public void lastElementInSequence() {
         int[] arr = new int[]{2, 4, 7, 8};
         SearchResult sr = BinarySearch.search(8, arr);
         assertTrue(sr.isFound() && sr.getPosition() == arr.length);
     }
 
     @Test
-    public void MiddleElementInSequence() {
+    public void middleElementInSequence() {
         int[] arr = new int[]{2, 4, 5, 7, 8};
         SearchResult sr = BinarySearch.search(5, arr);
         assertTrue(sr.isFound() && sr.getPosition()>0 && sr.getPosition() < arr.length);
     }
     @Test
-    public void NotFoundInLongSequence() {
+    public void notFoundInLongSequence() {
         SearchResult sr = BinarySearch.search(2, new int[]{1,3,5,6,7,8,9});
         assertTrue(!sr.isFound() && sr.getPosition() == -1);
     }
