@@ -33,4 +33,14 @@ class BinarySearchTest {
         assertFalse(searchResult.isFound());
         assertEquals(-1, searchResult.getPosition());
     }
+
+    @Test
+    void firstElementInSeq() {
+        int element = 20;
+        int[] seq = new int[]{20,5,623,46,853,415,23,1,78};
+
+        SearchResult searchResult = BinarySearch.search(element, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(1,searchResult.getPosition());
+    }
 }
