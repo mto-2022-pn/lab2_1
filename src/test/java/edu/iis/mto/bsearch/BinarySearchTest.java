@@ -92,4 +92,31 @@ class BinarySearchTest {
             SearchResult result = BinarySearch.search(key, seq);
         });
     }
+
+    @Test
+    void keyIsCloseToSeqCenter() {
+        int key = 45;
+        int[] seq = {1, 4, 6, 23, 45, 47, 49, 56, 69, 100, 123};
+        SearchResult result = BinarySearch.search(key, seq);
+        assertTrue(result.isFound());
+        assertEquals(result.getPosition(), 4);
+    }
+
+    @Test
+    void seqOfIntsWithoutGaps() {
+        int key = 10;
+        int[] seq = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+        SearchResult result = BinarySearch.search(key, seq);
+        assertTrue(result.isFound());
+        assertEquals(result.getPosition(), 9);
+    }
+
+    @Test
+    void seqOfIntsWithGaps() {
+        int key = 56;
+        int[] seq = {1, 2, 3, 56, 58, 59, 127, 128, 129, 1003, 1004};
+        SearchResult result = BinarySearch.search(key, seq);
+        assertTrue(result.isFound());
+        assertEquals(result.getPosition(), 3);
+    }
 }
