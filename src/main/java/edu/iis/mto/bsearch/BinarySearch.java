@@ -3,6 +3,9 @@
  */
 package edu.iis.mto.bsearch;
 
+import java.util.Arrays;
+import java.util.HashMap;
+
 /**
  * Klasa implementująca wyszukiwanie binarne
  *
@@ -22,6 +25,16 @@ public class BinarySearch {
      *         sekwencji, jezeli nie znaleziony -1)
      */
     public static SearchResult search(int key, int[] seq) {
+        if(seq == null) throw new NullPointerException();
+        if(seq.length < 1) throw new IllegalArgumentException();
+        HashMap<Integer,Integer> hashmap = new HashMap<Integer,Integer>();
+        for (int j = 0; j < seq.length; j++) {
+            hashmap.put(seq[j], j);
+        }
+        if(hashmap.size()!=seq.length) throw new IllegalArgumentException();
+        for(int i=0;i<seq.length-1;i++){
+            if(seq[i]>seq[i+1]) throw new IllegalArgumentException();
+        }
         int start = 0;
         int end = seq.length - 1;
         int center;
@@ -30,7 +43,7 @@ public class BinarySearch {
         while (start <= end) {
             center = (start + end) / 2;
             if (seq[center] == key) {
-                result.setPosition(center + 1);
+                result.setPosition(center);
                 break;
             } else {
                 if (seq[center] < key) {
