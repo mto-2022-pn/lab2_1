@@ -60,4 +60,21 @@ class BinarySearchTest {
         assertEquals(-1, searchResult.getPosition());
     }
 
+    @Test
+    void testEmptyList() {
+        int[] seq = {};
+        assertThrows(IllegalArgumentException.class, ()-> BinarySearch.search(6, seq));
+    }
+
+    @Test
+    void testNotSortedList() {
+        int[] seq = {1, 2, 4, 3};
+        assertThrows(IllegalArgumentException.class, ()-> BinarySearch.search(4, seq));
+    }
+
+    @Test
+    void testDuplicatedElementsInList() {
+        int[] seq = {1, 2, 3, 3};
+        assertThrows(IllegalArgumentException.class, ()-> BinarySearch.search(1, seq));
+    }
 }
