@@ -45,11 +45,27 @@ class BinarySearchTest {
     }
 
     @Test
-    void testMultipleElementMid() {
+    void testOddMultipleElementMid() {
         int[] seq = {1, 2, 3, 4, 5};
         SearchResult searchResult = BinarySearch.search(seq[(seq.length - 1) / 2], seq);
         assertTrue(searchResult.isFound());
         assertEquals((seq.length - 1) / 2,searchResult.getPosition());
+    }
+
+    @Test
+    void testEvenMultipleElementMidSmaller() {
+        int[] seq = {1, 2, 3, 4};
+        SearchResult searchResult = BinarySearch.search(seq[1], seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(1,searchResult.getPosition());
+    }
+
+    @Test
+    void testEvenMultipleElementMidBigger() {
+        int[] seq = {1, 2, 3, 4};
+        SearchResult searchResult = BinarySearch.search(seq[2], seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(2,searchResult.getPosition());
     }
 
     @Test
