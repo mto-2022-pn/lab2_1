@@ -103,36 +103,30 @@ class BinarySearchTest {
     }
 
     @Test
-    void binarySearchTesting_OddNumberOfElementsInSequence() {
-        int mainKey = 99, supportKey1 = 98, supportKey2 = 100;
-        int[] seq = { -4, 4, 45, 98, 99, 100, 2560, 8988, 18987 };
-        SearchResult searchResult = BinarySearch.search(mainKey, seq);
+    void binarySearchTesting_OddNumberOfElementsInSequence_KeyIsMiddleElement() {
+        int key = 99;
+        int[] seq = { -4, 4, 45, 98, key, 100, 2560, 8988, 18987 };
+        SearchResult searchResult = BinarySearch.search(key, seq);
         assertTrue(searchResult.isFound());
-        assertEquals(seq[searchResult.getPosition()], mainKey);
-        searchResult = BinarySearch.search(supportKey1, seq);
-        assertTrue(searchResult.isFound());
-        assertEquals(seq[searchResult.getPosition()], supportKey1);
-        searchResult = BinarySearch.search(supportKey2, seq);
-        assertTrue(searchResult.isFound());
-        assertEquals(seq[searchResult.getPosition()], supportKey2);
+        assertEquals(seq[searchResult.getPosition()], key);
     }
 
     @Test
-    void binarySearchTesting_EvenNumberOfElementsInSequence() {
-        int mainKey = 2, supportKey1 = 1, supportKey2 = 98, supportKey3 = 112;
-        int[] seq = { -3, -2, -1, 0, 1, 2, 98, 112, 777, 888, 999, 1000 };
-        SearchResult searchResult = BinarySearch.search(mainKey, seq);
+    void binarySearchTesting_EvenNumberOfElementsInSequence_KeyIsLeftMiddleElement() {
+        int key = 2;
+        int[] seq = { -3, -2, -1, 0, 1, key, 98, 112, 777, 888, 999, 1000 };
+        SearchResult searchResult = BinarySearch.search(key, seq);
         assertTrue(searchResult.isFound());
-        assertEquals(seq[searchResult.getPosition()], mainKey);
-        searchResult = BinarySearch.search(supportKey1, seq);
+        assertEquals(seq[searchResult.getPosition()], key);
+    }
+
+    @Test
+    void binarySearchTesting_EvenNumberOfElementsInSequence_KeyIsRightMiddleElement() {
+        int key = 98;
+        int[] seq = { -3, -2, -1, 0, 1, 2, key, 112, 777, 888, 999, 1000 };
+        SearchResult searchResult = BinarySearch.search(key, seq);
         assertTrue(searchResult.isFound());
-        assertEquals(seq[searchResult.getPosition()], supportKey1);
-        searchResult = BinarySearch.search(supportKey2, seq);
-        assertTrue(searchResult.isFound());
-        assertEquals(seq[searchResult.getPosition()], supportKey2);
-        searchResult = BinarySearch.search(supportKey3, seq);
-        assertTrue(searchResult.isFound());
-        assertEquals(seq[searchResult.getPosition()], supportKey3);
+        assertEquals(seq[searchResult.getPosition()], key);
     }
 
 }
