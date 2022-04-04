@@ -52,11 +52,25 @@ class BinarySearchTest {
     }
 
     @Test
-    void TestElementIsFoundInSequenceWithManyElements() {
+    void TestElementIsNotFoundInSequenceWithManyElements() {
         int[] seq = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         int key = 10;
         SearchResult result = BinarySearch.search(key, seq);
         assertFalse(result.isFound() && result.getPosition() == -1);
+    }
+
+    @Test
+    void TestFindElementInEmptySequence() {
+        int[] seq = {};
+        int key = 1;
+        assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(key, seq));
+    }
+
+    @Test
+    void TestFindElementInSequenceWithDuplicates() {
+        int[] seq = { 1, 2, 3, 4, 5, 5, 5, 8, 9 };
+        int key = 5;
+        assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(key, seq));
     }
 
 }

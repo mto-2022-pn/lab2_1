@@ -22,6 +22,10 @@ public class BinarySearch {
      *         sekwencji, jezeli nie znaleziony -1)
      */
     public static SearchResult search(int key, int[] seq) {
+        if (seq.length == 0 || doDuplicatesExist(seq)) {
+            throw new IllegalArgumentException();
+        }
+
         int start = 0;
         int end = seq.length - 1;
         int center;
@@ -41,6 +45,17 @@ public class BinarySearch {
             }
         }
         return result;
+    }
+
+    public static boolean doDuplicatesExist(int[] seq) {
+        for (int i = 0; i < seq.length; i++) {
+            for (int j = i + 1 ; j < seq.length; j++) {
+                if (seq[i] == seq[j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }
