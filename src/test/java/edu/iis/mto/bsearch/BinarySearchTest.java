@@ -36,7 +36,15 @@ class BinarySearchTest {
     }
 
     @Test
-    void TestElementIsFoundInSequenceInTheMiddle() {
+    void TestElementIsFoundInEvenSequenceInTheMiddle() {
+        int[] seq = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int key = 6;
+        SearchResult result = BinarySearch.search(key, seq);
+        assertTrue(result.isFound() && seq[result.getPosition()] == key);
+    }
+
+    @Test
+    void TestElementIsFoundInOddSequenceInTheMiddle() {
         int[] seq = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int key = 5;
         SearchResult result = BinarySearch.search(key, seq);
