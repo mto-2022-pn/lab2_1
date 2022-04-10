@@ -65,6 +65,24 @@ class BinarySearchTest {
         assertEquals(expected_position, result.getPosition());
     }
 
+    @Test void testKeyPresentMiddleLeftInEvenMultipleElementsSeq() {
+        int key = 9;
+        int[] seq = {5, 9, 12, 16};
+        int expected_position = 1;
+        SearchResult result = BinarySearch.search(key, seq);
+        assertTrue(result.isFound());
+        assertEquals(expected_position, result.getPosition());
+    }
+
+    @Test void testKeyPresentMiddleRightInEvenMultipleElementsSeq() {
+        int key = 12;
+        int[] seq = {5, 9, 12, 16};
+        int expected_position = 2;
+        SearchResult result = BinarySearch.search(key, seq);
+        assertTrue(result.isFound());
+        assertEquals(expected_position, result.getPosition());
+    }
+
     @Test void testPassNullAsSeq() {
         assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(0, null));
     }
