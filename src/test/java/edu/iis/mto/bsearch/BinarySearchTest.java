@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 class BinarySearchTest {
 
@@ -64,4 +65,12 @@ class BinarySearchTest {
         assertEquals(expected_position, result.getPosition());
     }
 
+    @Test void testPassNullAsSeq() {
+        assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(0, null));
+    }
+
+    @Test void testPassEmptySeq() {
+        int[] seq = {};
+        assertThrows(IllegalArgumentException.class, () -> BinarySearch.search(0, seq));
+    }
 }
